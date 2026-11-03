@@ -1,3 +1,4 @@
+
 name: Build Clock App
 
 on:
@@ -20,7 +21,11 @@ jobs:
           java-version: '17'
 
       - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
+        uses: android-actions/setup-android@v4
+        with:
+          accept-android-sdk-licenses: true
+          log-accepted-android-sdk-licenses: false
+          packages: ''
 
       - name: Install Android SDK 34
         run: sdkmanager "platforms;android-34" "build-tools;34.0.0"
@@ -38,3 +43,4 @@ jobs:
         with:
           name: ClockApp-APK
           path: app/build/outputs/apk/debug/*.apk
+
